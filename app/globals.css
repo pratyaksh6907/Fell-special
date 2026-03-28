@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --pink-mist: #fff0f5;
+  --rose-glass: rgba(255, 209, 220, 0.45);
+}
+
+body {
+  @apply min-h-screen antialiased text-slate-800;
+  background: linear-gradient(
+    160deg,
+    #fff0f5 0%,
+    #ffe4ec 35%,
+    #ffd1dc 70%,
+    #ffffff 100%
+  );
+  background-attachment: fixed;
+}
