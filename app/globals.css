@@ -3,18 +3,108 @@
 @tailwind utilities;
 
 :root {
-  --pink-mist: #fff0f5;
-  --rose-glass: rgba(255, 209, 220, 0.45);
+  --shell: #fff8f1;
+  --petal: #ffd8e7;
+  --berry: #ff8eb3;
+  --rosewood: #60233e;
+  --leaf: #4f845e;
+  --gold: #f2c975;
 }
 
 body {
   @apply min-h-screen antialiased text-slate-800;
-  background: linear-gradient(
-    160deg,
-    #fff0f5 0%,
-    #ffe4ec 35%,
-    #ffd1dc 70%,
-    #ffffff 100%
-  );
+  background:
+    radial-gradient(1200px 520px at 8% -8%, rgba(255, 223, 185, 0.72), transparent 60%),
+    radial-gradient(900px 540px at 95% 6%, rgba(255, 193, 221, 0.66), transparent 58%),
+    radial-gradient(700px 440px at 50% 108%, rgba(181, 220, 192, 0.42), transparent 55%),
+    linear-gradient(152deg, #fff8f1 0%, #ffe7ef 33%, #ffd7e9 64%, #fffdf7 100%);
   background-attachment: fixed;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 14% 23%, rgba(255, 255, 255, 0.58) 0 2px, transparent 2px),
+    radial-gradient(circle at 70% 76%, rgba(255, 255, 255, 0.46) 0 1.5px, transparent 1.5px),
+    radial-gradient(circle at 84% 28%, rgba(255, 255, 255, 0.4) 0 2px, transparent 2px);
+  background-size: 180px 180px, 220px 220px, 200px 200px;
+  opacity: 0.55;
+  z-index: -1;
+}
+
+.flower-stage {
+  position: relative;
+  isolation: isolate;
+  transform-style: preserve-3d;
+}
+
+.aurora-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(18px);
+  opacity: 0.55;
+}
+
+.petal-chip {
+  position: absolute;
+  border-radius: 9999px;
+  box-shadow: 0 10px 24px rgba(96, 35, 62, 0.15);
+  background: radial-gradient(circle at 30% 24%, #fff5fa 0%, #ffb9d2 42%, #ff8fb4 100%);
+}
+
+.gift-letter {
+  border-radius: 1.6rem;
+  border: 1px solid rgba(249, 188, 212, 0.9);
+  background:
+    linear-gradient(140deg, rgba(255, 252, 246, 0.96), rgba(255, 245, 250, 0.95)),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(208, 164, 182, 0.12) 0px,
+      rgba(208, 164, 182, 0.12) 1px,
+      transparent 1px,
+      transparent 30px
+    );
+  box-shadow:
+    0 24px 55px rgba(96, 35, 62, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+.wax-seal {
+  background: radial-gradient(circle at 30% 30%, #ffbfd6 0%, #df4a87 66%, #b73266 100%);
+  box-shadow: 0 10px 18px rgba(155, 35, 81, 0.36);
+}
+
+@keyframes drift {
+  0% { transform: translateY(0) translateX(0) rotate(0deg); }
+  50% { transform: translateY(-12px) translateX(4px) rotate(3deg); }
+  100% { transform: translateY(0) translateX(0) rotate(0deg); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.28; }
+  50% { opacity: 0.72; }
+}
+
+.animate-drift {
+  animation: drift 6s ease-in-out infinite;
+}
+
+.animate-twinkle {
+  animation: twinkle 2.8s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+  body::before {
+    opacity: 0.38;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-drift,
+  .animate-twinkle {
+    animation: none !important;
+  }
 }
